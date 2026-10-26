@@ -64,7 +64,8 @@ final class Calculator
      * @param int   $principal      The total loan amount (Principal)
      * @param int   $payment        The monthly payment
      * @param int   $numberOfMonths The number of months
-     * @param float $guess          A guess of what the interest might be. Interest as a number between zero and one. Example 0.045
+     * @param float $guess          A guess of what the interest might be. Interest as a number between zero
+     *                              and one. Example 0.045
      *
      * @return float
      */

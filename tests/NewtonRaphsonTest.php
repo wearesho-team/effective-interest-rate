@@ -10,7 +10,7 @@ class NewtonRaphsonTest extends TestCase
     /**
      * From https://brownmath.com/bsci/loan.htm#Sample6.
      */
-    public function testGetEffectiveInterest()
+    public function testGetEffectiveInterest(): void
     {
         $a = 11200;
         $p = 291;
@@ -26,6 +26,6 @@ class NewtonRaphsonTest extends TestCase
 
         $newton = new NewtonRaphson();
         $interest = 12 * $newton->run($fx, $fdx, 0.12);
-        $this->assertEquals(0.1128, $interest, '', 0.0001);
+        $this->assertEqualsWithDelta(0.1128, $interest, 0.0001);
     }
 }

@@ -3,11 +3,12 @@
 namespace Nyholm\EffectiveInterest\Test;
 
 use Nyholm\EffectiveInterest\Calculator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class CalculatorSpecifiedPaymentsTest extends TestCase
 {
-    public function testReadmeExample()
+    public function testReadmeExample(): void
     {
         $principal = 100000;
         $payment = 2400;
@@ -55,34 +56,47 @@ class CalculatorSpecifiedPaymentsTest extends TestCase
         ];
 
         $interest = $calculator->withSpecifiedPayments($principal, $startDate, $payments, $guess);
-        $this->assertEquals(0.084870, $interest, 'Failed to calculate effective interest with specified payments.', 0.0001);
+        $this->assertEqualsWithDelta(
+            0.084870,
+            $interest,
+            0.0001,
+            'Failed to calculate effective interest with specified payments.'
+        );
     }
 
-    /**
-     * @dataProvider generator
-     */
-    public function testWithSpecifiedPayments(float $correctValue, int $principal, string $startDate, array $payments, float $guess)
-    {
+    #[DataProvider('generator')]
+    public function testWithSpecifiedPayments(
+        float $correctValue,
+        int $principal,
+        string $startDate,
+        array $payments,
+        float $guess
+    ): void {
         $calculator = new Calculator();
         $interest = $calculator->withSpecifiedPayments($principal, $startDate, $payments, $guess);
-        $this->assertEquals($correctValue, $interest, 'Failed to calculate effective interest with specified payments.', 0.0001);
+        $this->assertEqualsWithDelta(
+            $correctValue,
+            $interest,
+            0.0001,
+            'Failed to calculate effective interest with specified payments.'
+        );
     }
 
-    public function generator()
+    public static function generator(): array
     {
         return [
-            [0.0233, 336000, '2017-01-30', $this->payments0(), 0.02],
-            [0.0805, 171920, '2017-01-30', $this->payments1(), 0.07],
-            [0.1045, 52800, '2017-01-30', $this->payments2(), 0.09],
-            [0.0549, 115000, '2017-01-30', $this->payments3(), 0.04],
-            [0.0966, 140000, '2017-01-30', $this->payments4(), 0.04],
+            [0.0233, 336000, '2017-01-30', self::payments0(), 0.02],
+            [0.0805, 171920, '2017-01-30', self::payments1(), 0.07],
+            [0.1045, 52800, '2017-01-30', self::payments2(), 0.09],
+            [0.0549, 115000, '2017-01-30', self::payments3(), 0.04],
+            [0.0966, 140000, '2017-01-30', self::payments4(), 0.04],
         ];
     }
 
     /**
      * @return array
      */
-    private function payments0(): array
+    private static function payments0(): array
     {
         return [
             '17-02-28' => 4607,
@@ -127,7 +141,7 @@ class CalculatorSpecifiedPaymentsTest extends TestCase
     /**
      * @return array
      */
-    private function payments1(): array
+    private static function payments1(): array
     {
         return [
             '17-02-28' => 4050,
@@ -196,7 +210,7 @@ class CalculatorSpecifiedPaymentsTest extends TestCase
     /**
      * @return array
      */
-    private function payments2(): array
+    private static function payments2(): array
     {
         return [
             '17-02-28' => 2279,
@@ -241,7 +255,7 @@ class CalculatorSpecifiedPaymentsTest extends TestCase
     /**
      * @return array
      */
-    private function payments3(): array
+    private static function payments3(): array
     {
         return [
             '17-02-28' => 2457,
@@ -321,7 +335,7 @@ class CalculatorSpecifiedPaymentsTest extends TestCase
     /**
      * @return array
      */
-    private function payments4(): array
+    private static function payments4(): array
     {
         return [
             '2017-02-28' => 2457,
