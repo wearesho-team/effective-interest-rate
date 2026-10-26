@@ -1,11 +1,22 @@
 # Effective interest rate
-
-[![Latest Version](https://img.shields.io/github/release/nyholm/effective-interest-rate.svg?style=flat-square)](https://github.com/nyholm/effective-interest-rate/releases)
+[![Test & Lint](https://github.com/wearesho-team/effective-interest-rate/actions/workflows/php.yml/badge.svg?branch=master)](https://github.com/wearesho-team/effective-interest-rate/actions/workflows/php.yml)
+[![Latest Stable Version](https://poser.pugx.org/wearesho-team/effective-interest-rate/v/stable.png)](https://packagist.org/packages/wearesho-team/effective-interest-rate)
+[![codecov](https://codecov.io/gh/wearesho-team/effective-interest-rate/branch/master/graph/badge.svg)](https://codecov.io/gh/wearesho-team/effective-interest-rate)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/Nyholm/effective-interest-rate.svg?style=flat-square)](https://travis-ci.org/Nyholm/effective-interest-rate)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/nyholm/effective-interest-rate.svg?style=flat-square)](https://scrutinizer-ci.com/g/nyholm/effective-interest-rate)
-[![Quality Score](https://img.shields.io/scrutinizer/g/nyholm/effective-interest-rate.svg?style=flat-square)](https://scrutinizer-ci.com/g/nyholm/effective-interest-rate)
-[![Total Downloads](https://img.shields.io/packagist/dt/nyholm/effective-interest-rate.svg?style=flat-square)](https://packagist.org/packages/nyholm/effective-interest-rate)
+
+> [!NOTE]
+> This is a fork of [nyholm/effective-interest-rate](https://github.com/Nyholm/effective-interest-rate) for PHP 8.4+,
+> maintained by Wearesho until the fix for the PHP 8.4 deprecation is released upstream.
+> The namespace is unchanged (`Nyholm\EffectiveInterest`) and the package replaces `nyholm/effective-interest-rate`,
+> so it is a drop-in replacement, and switching back only takes a `composer.json` change.
+
+[Changelog](./CHANGELOG.md)
+
+## Installation
+
+```bash
+composer require wearesho-team/effective-interest-rate
+```
 
 This is a library that calculates the effective interest rate. The effective interest could also be called XIRR or
 effective APR. This is the **PHP** library. You will find a JavaScript version of this library 
